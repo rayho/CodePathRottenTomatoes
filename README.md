@@ -19,4 +19,5 @@ Optional features
 - Customize the navigation bar. (optional)
 
 See demo.gif for walkthrough
+
 ![Walkthrough GIF](https://github.com/rayho/CodePathRottenTomatoes/blob/master/demo.gif)
