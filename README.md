@@ -18,4 +18,5 @@ Optional features
 - All images fade in (optional)
 - Customize the navigation bar. (optional)
 
-See demo.gif for walkthrough.
+See demo.gif for walkthrough
+![Walkthrough GIF](https://github.com/rayho/CodePathRottenTomatoes/blob/master/demo.gif)
