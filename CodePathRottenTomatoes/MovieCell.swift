@@ -19,9 +19,16 @@ class MovieCell: UITableViewCell {
         titleLabel.text = title
         var imageUrl: NSURL = NSURL.URLWithString(withImageUrlString)
         var placeholder: UIImage = UIImage(named: "poster_placeholder")
+        var imageUrlRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
 
-        // CRASH OCCURS HERE
-        posterImageView.setImageWithURL(imageUrl, placeholderImage: placeholder)
+        // Set image, crossfading between placeholder and actual image
+        posterImageView.setImageWithURLRequest(imageUrlRequest, placeholderImage: placeholder, success: { (request: NSURLRequest!, response: NSHTTPURLResponse!, image: UIImage!) in
+            UIView.transitionWithView(self.posterImageView, duration: 0.33, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+                self.posterImageView.image = image
+                }, completion: nil)
+        }, failure: { (request: NSURLRequest!, response: NSHTTPURLResponse!, error: NSError!) in
+            NSLog("Image download failed: %@", request.URL)
+        })
 
         synopsisLabel.text = withSynopsis
     }

@@ -41,11 +41,14 @@ class DetailController: UIViewController, UITextViewDelegate {
             let posterOriginalUrl: NSURL = NSURL.URLWithString(posterOriginalUrlString)
             let synopsis: NSString = movie!.valueForKey("synopsis") as NSString
             navigation.title = title
-            posterImageView.setImageWithURL(posterOriginalUrl)
             synopsisTextView.text = synopsis
             synopsisTextView.sizeToFit()
             let contentHeight = synopsisTextView.frame.height + synopsisTextView.frame.minX + 16
             scrollView.contentSize = CGSize(width: scrollView.frame.width, height: contentHeight)
+
+            // Set poster
+            NSLog("Downloading original: %@", posterOriginalUrl)
+            self.posterImageView.setImageWithURL(posterOriginalUrl)
         }
         updateTintPosition()
     }
